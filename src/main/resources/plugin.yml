@@ -1,3 +1,8 @@
 name: YeahPhy
 version: 1.0.0
 main: io.yeah.yeahphy.Main
+
+commands:
+  player:
+    description: get player's info.
+    usage: "/player [username]"
