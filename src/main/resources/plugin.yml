@@ -5,4 +5,8 @@ main: io.yeah.yeahphy.Main
 commands:
   player:
     description: get player's info.
-    usage: "/player [username]"
+    usage: /player [username]
+
+  stat:
+    description: set or show players stats
+    usage: /stat <player> <stat> [set-value]

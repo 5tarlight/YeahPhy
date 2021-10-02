@@ -16,7 +16,7 @@ class PlayerJoinQuit : Listener {
     playerJoin(event.player)
     val player = getYeahPlayerByName(event.player.name)
     if (player != null) {
-      event.player.sendMessage("Your current exp: ${player.exp}")
+      event.player.sendMessage(player.toString())
     }
   }
 
