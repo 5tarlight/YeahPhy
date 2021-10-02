@@ -19,6 +19,11 @@ fun getYeahPlayerByName(name: String): YeahPlayer? {
   return currentPlayer.filter { name == it.name }[0]
 }
 
+fun getPlayerIndexByName(name: String): Int {
+  val player = getYeahPlayerByName(name)
+  return currentPlayer.indexOf(player)
+}
+
 fun playerQuit(player: YeahPlayer?) {
   val yeahPlayer = player?.let { getYeahPlayerByName(it.name) }
   yeahPlayer?.let { savePlayerFile(it) }
@@ -28,4 +33,8 @@ fun playerQuit(player: YeahPlayer?) {
 fun loadOnlinePlayers() {
   Bukkit.getConsoleSender().sendMessage("Reloading online player list")
   Bukkit.getOnlinePlayers().forEach { p -> playerJoin(p) }
+}
+
+fun saveAllPlayers() {
+  currentPlayer.forEach { p -> savePlayerFile(p) }
 }
