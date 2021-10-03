@@ -27,5 +27,9 @@ fun loadPlayerFile(player: Player): YeahPlayer {
   val ois = ObjectInputStream(fis)
 
   val data = ois.readObject() as PlayerData
+
+  ois.close()
+  fis.close()
+
   return YeahPlayer(data)
 }

@@ -12,14 +12,12 @@ import org.bukkit.command.TabCompleter
 
 class PlayerStat : CommandExecutor {
   override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
-    if (!sender.isOp) {
-      sender.sendMessage("${ChatColor.RED}Permission Denied")
-      return true
-    }
-
-    if (args.isEmpty() || args.size == 1)
+    if (args.isEmpty())
       return false
-    else if (args.size == 2) {
+    else if (args.size == 1) {
+      sender.sendMessage(getYeahPlayerByName(args[0]).toString())
+      return true
+    } else if (args.size == 2) {
       val stat = args[1]
       val player = getYeahPlayerByName(args[0])
 
@@ -37,6 +35,11 @@ class PlayerStat : CommandExecutor {
       sender.sendMessage("${player.name}'s $stat: $value")
       return true
     } else if (args.size == 3) {
+      if (!sender.isOp) {
+        sender.sendMessage("${ChatColor.RED}Permission Denied")
+        return true
+      }
+
       val stat = args[1]
       val value = args[2].toDouble()
       val index = getPlayerIndexByName(args[0])

@@ -9,4 +9,4 @@ commands:
 
   stat:
     description: set or show players stats
-    usage: /stat <player> <stat> [set-value]
+    usage: /stat <player> [stat] [set-value]
