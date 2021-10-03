@@ -7,6 +7,8 @@ import io.yeah.yeahphy.cmd.admin.PlayerList
 import io.yeah.yeahphy.cmd.admin.PlayerListTabCompleter
 import io.yeah.yeahphy.cmd.admin.PlayerStat
 import io.yeah.yeahphy.cmd.admin.PlayerStatTabCompleter
+import io.yeah.yeahphy.event.PlayerBlock
+import io.yeah.yeahphy.event.PlayerExp
 import io.yeah.yeahphy.event.PlayerJoinQuit
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
@@ -21,6 +23,8 @@ class Main : JavaPlugin() {
     loadOnlinePlayers()
 
     server.pluginManager.registerEvents(PlayerJoinQuit(), this)
+    server.pluginManager.registerEvents(PlayerBlock(), this)
+    server.pluginManager.registerEvents(PlayerExp(), this)
 
     getCommand("player")?.setExecutor(PlayerList())
     getCommand("player")?.tabCompleter = PlayerListTabCompleter()
